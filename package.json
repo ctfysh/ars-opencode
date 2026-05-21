@@ -1,0 +1,6 @@
+{
+  "name": "ars-opencode",
+  "version": "3.9.4.2-oc",
+  "type": "module",
+  "main": ".opencode/plugins/ars.js"
+}
