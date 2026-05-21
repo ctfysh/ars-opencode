@@ -1,0 +1,28 @@
+{
+  "name": "academic-research-skills",
+  "version": "3.9.4.2-oc",
+  "description": "OpenCode port of Academic Research Skills — full research pipeline from literature search to publication",
+  "skills": {
+    "ars-meta": "skills/ars-meta/SKILL.md",
+    "ars-deep-research": "skills/ars-deep-research/SKILL.md",
+    "ars-academic-paper": "skills/ars-academic-paper/SKILL.md",
+    "ars-reviewer": "skills/ars-reviewer/SKILL.md",
+    "ars-pipeline": "skills/ars-pipeline/SKILL.md"
+  },
+  "commands": {
+    "ars-full": "commands/ars-full.md",
+    "ars-plan": "commands/ars-plan.md",
+    "ars-review": "commands/ars-review.md",
+    "ars-lit-review": "commands/ars-lit-review.md",
+    "ars-socratic": "commands/ars-socratic.md",
+    "ars-systematic-review": "commands/ars-systematic-review.md",
+    "ars-fact-check": "commands/ars-fact-check.md",
+    "ars-reviewer": "commands/ars-reviewer.md",
+    "ars-revision": "commands/ars-revision.md",
+    "ars-abstract": "commands/ars-abstract.md",
+    "ars-disclosure": "commands/ars-disclosure.md",
+    "ars-format": "commands/ars-format.md",
+    "ars-calibrate": "commands/ars-calibrate.md"
+  },
+  "init": "hooks/ars-init.md"
+}
