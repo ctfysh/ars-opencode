@@ -8,7 +8,7 @@ This document defines the complete execution protocol for `integrity_verificatio
 
 Phase D's purpose is to perform originality screening on body text content before paper submission for review and after revision completion. Unlike Phases A-C which focus on "whether citations and data are correct," Phase D focuses on "whether the body text itself is originally written."
 
-**Core principle: Heuristic screening, not final determination.** This protocol uses WebSearch for publicly available literature comparison. Results are preliminary screening signals and do not equate to conclusions from professional plagiarism detection software.
+**Core principle: Heuristic screening, not final determination.** This protocol uses websearch for publicly available literature comparison. Results are preliminary screening signals and do not equate to conclusions from professional plagiarism detection software.
 
 ---
 
@@ -25,11 +25,11 @@ For each paragraph in the paper body text:
 3. Record the characteristic sentence's paragraph location (section + paragraph number)
 ```
 
-### D1.2 WebSearch Comparison
+### D1.2 websearch Comparison
 
 ```
 For each extracted characteristic sentence:
-1. Use the characteristic sentence (or key fragment) as a WebSearch query
+1. Use the characteristic sentence (or key fragment) as a websearch query
    - Search term: Enclose 8-12 consecutive words in quotation marks
    - Supplementary search: Remove quotes to check for paraphrased versions
 2. Review the top 5-10 search results
@@ -40,7 +40,7 @@ For each extracted characteristic sentence:
 
 | Grade | Code | Definition | Determination Criteria |
 |-------|------|-----------|----------------------|
-| Original | `ORIGINAL` | No similar expression found in public literature | WebSearch returns no related matches |
+| Original | `ORIGINAL` | No similar expression found in public literature | websearch returns no related matches |
 | Common Knowledge | `COMMON_KNOWLEDGE` | The knowledge is a widely accepted fact in the field | Multiple sources express the same fact in different ways |
 | Paraphrase | `PARAPHRASE` | Expresses same viewpoint as a source but with clearly different wording | Semantically similar but significantly different sentence structure and word choice, with citation |
 | Close Match | `CLOSE_MATCH` | Highly similar wording to a source, with only a few words substituted | Nearly identical sentence structure, with only synonym substitutions or word order changes |
@@ -69,7 +69,7 @@ For each extracted characteristic sentence:
 Prerequisite: User provides author name(s)
 
 For each author (or primary author):
-1. WebSearch: "author name" + research area keywords
+1. websearch: "author name" + research area keywords
 2. Identify author's existing publication list (Google Scholar profile preferred)
 3. Record existing publications related to the current paper's topic
 ```
@@ -153,7 +153,7 @@ This protocol's originality verification has the following inherent limitations 
 
 | # | Limitation | Description |
 |---|-----------|------------|
-| 1 | **Not professional plagiarism detection software** | This protocol uses WebSearch for heuristic comparison, not Turnitin, iThenticate, or other professional tools — cannot calculate precise text overlap rates |
+| 1 | **Not professional plagiarism detection software** | This protocol uses websearch for heuristic comparison, not Turnitin, iThenticate, or other professional tools — cannot calculate precise text overlap rates |
 | 2 | **Limited coverage** | Can only compare publicly searchable literature (open access, preprints, web pages) — cannot search full-text databases behind paywalls |
 | 3 | **Language limitation** | Cross-language plagiarism (e.g., plagiarism via translation) is difficult to detect |
 | 4 | **Sampling, not exhaustive** | Limited by efficiency, only 30%-50% of paragraphs are sampled — missed detection risk exists |
@@ -209,7 +209,7 @@ Indicators triggered: X / 6 ([Below threshold, not flagged / Threshold reached, 
 
 ### Tool Limitation Disclaimer
 
-> This originality verification uses WebSearch for heuristic comparison and is not professional plagiarism detection software (such as Turnitin / iThenticate). Coverage is limited to publicly searchable literature, with a sampling rate of [Z]%, and there is a risk of missed detection. These results serve as preliminary screening; it is recommended to use professional plagiarism detection tools for complete duplicate checking before formal submission.
+> This originality verification uses websearch for heuristic comparison and is not professional plagiarism detection software (such as Turnitin / iThenticate). Coverage is limited to publicly searchable literature, with a sampling rate of [Z]%, and there is a risk of missed detection. These results serve as preliminary screening; it is recommended to use professional plagiarism detection tools for complete duplicate checking before formal submission.
 ```
 
 ---

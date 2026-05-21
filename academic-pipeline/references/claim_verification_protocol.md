@@ -16,7 +16,7 @@ Verifies that quantitative and factual claims in the paper are accurately suppor
 
 ## E2: Source Tracing
 - For each claim, locate the specific passage in the cited source that supports it
-- Use WebSearch + DOI lookup to find the original source
+- Use websearch + DOI lookup to find the original source
 - If source is behind paywall, note as UNVERIFIABLE_ACCESS
 
 ## E3: Cross-Referencing

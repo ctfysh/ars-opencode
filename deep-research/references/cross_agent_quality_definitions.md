@@ -9,6 +9,6 @@ Unified definitions to prevent inconsistency across agents.
 | **CRITICAL severity** | IRON RULE: Issue that, if unresolved, would invalidate a core conclusion or constitute academic misconduct. Requires immediate resolution before pipeline can proceed | All agents |
 | **Source Tier** | tier_1 = top-quartile peer-reviewed journal; tier_2 = other peer-reviewed; tier_3 = academic but not peer-reviewed; tier_4 = grey literature | bibliography_agent, source_verification_agent |
 | **Minimum Source Count** | full = 15+, quick = 5-8, lit-review = 25+, systematic-review = all eligible (no limit), fact-check = 3+ per claim | bibliography_agent |
-| **Verification Threshold** | 100% DOI check + 50% WebSearch spot-check | source_verification_agent, ethics_review_agent |
+| **Verification Threshold** | 100% DOI check + 50% websearch spot-check | source_verification_agent, ethics_review_agent |
 
 > **Cross-Skill Reference**: See `shared/handoff_schemas.md` for inter-stage data exchange formats.

@@ -10,7 +10,7 @@
 
 ## Purpose
 
-Provides programmatic verification of reference existence and bibliographic accuracy using the Semantic Scholar Academic Graph API. This supplements (not replaces) WebSearch-based verification by adding a structured, API-grounded check that returns machine-readable metadata.
+Provides programmatic verification of reference existence and bibliographic accuracy using the Semantic Scholar Academic Graph API. This supplements (not replaces) websearch-based verification by adding a structured, API-grounded check that returns machine-readable metadata.
 
 PaperOrchestra (Song et al., 2026) demonstrated that a two-phase citation pipeline — (1) broad discovery via web search, (2) sequential verification via Semantic Scholar API — achieves significantly higher citation coverage (P0 Recall +2-6%, P1 Recall +12-14% over baselines). ARS adopts the verification phase as an additional tier in the existing multi-tier verification strategy.
 
@@ -50,7 +50,7 @@ Used when re-verifying a reference that was previously resolved to a Semantic Sc
 |------|--------|----------|---------|
 | **Tier 0 (NEW)** | Semantic Scholar API | 100% of references | Programmatic existence check + metadata extraction |
 | Tier 1 | DOI resolution | 100% of DOI-bearing refs | URL-level existence check |
-| Tier 2 | WebSearch spot-check | 50% of sources | Human-readable verification |
+| Tier 2 | websearch spot-check | 50% of sources | Human-readable verification |
 
 **Execution order**: Tier 0 first (batch, 1 req/sec). References that PASS Tier 0 skip Tier 2 unless flagged for other reasons. References that FAIL Tier 0 proceed to Tier 1 + Tier 2 for manual investigation.
 
@@ -74,7 +74,7 @@ Record the following in the reference's verification audit trail:
 
 - If 0 results with Levenshtein >= 0.70: classify as `S2_NOT_FOUND`
 - `S2_NOT_FOUND` does NOT automatically mean fabrication — the paper may exist but not be indexed in Semantic Scholar (e.g., very recent, non-English, grey literature)
-- Proceed to Tier 1 (DOI) and Tier 2 (WebSearch) for further investigation
+- Proceed to Tier 1 (DOI) and Tier 2 (websearch) for further investigation
 - If ALL tiers fail: classify as `NOT_FOUND` per existing protocol
 
 ### On API failure
@@ -82,7 +82,7 @@ Record the following in the reference's verification audit trail:
 - HTTP 429 (rate limit): back off 2 seconds, retry up to 3 times
 - HTTP 5xx: skip S2 for this reference, proceed to Tier 1
 - Network error: skip S2 entirely for remaining batch, log `[S2-API-UNAVAILABLE]`
-- **Never block the pipeline on S2 API failure** — graceful degradation to existing WebSearch-only verification
+- **Never block the pipeline on S2 API failure** — graceful degradation to existing websearch-only verification
 
 ---
 
