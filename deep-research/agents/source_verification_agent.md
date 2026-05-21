@@ -92,7 +92,7 @@ For every source in the bibliography, query the Semantic Scholar API:
 - If no DOI: use title search (`GET /paper/search?query={title}`)
 - Accept match if Levenshtein title similarity >= 0.70 and year matches (or within +/-1 year)
 - Record `semantic_scholar_id` in the verification audit trail for each matched reference
-- References that PASS Tier 0 (matched with score >= 0.70) may skip Tier 2 WebSearch spot-check
+- References that PASS Tier 0 (matched with score >= 0.70) may skip Tier 2 websearch spot-check
 - References that FAIL Tier 0 (S2_NOT_FOUND) MUST proceed through Tier 1 + Tier 2
 
 **DOI mismatch detection**: If a DOI resolves in S2 but the returned title has Levenshtein < 0.70 against the reference title, flag as `DOI_MISMATCH` — this is a known hallucination pattern (Compound Deception Pattern #5: DOI Misdirection).
@@ -104,8 +104,8 @@ For every source in the bibliography, query the Semantic Scholar API:
 - Check: DOI resolves to a real page, title matches, authors match
 - Auto-flag: DOI returns 404 or title mismatch > 3 words
 
-#### Tier 2: WebSearch Spot-Check (50% coverage)
-- Randomly select 50% of sources for WebSearch verification
+#### Tier 2: websearch Spot-Check (50% coverage)
+- Randomly select 50% of sources for websearch verification
 - Search: `"{exact title}" {first author last name} {year}`
 - Verify: source exists, is published in the claimed venue, year matches
 - Priority sampling: verify ALL tier_3 and tier_4 sources first, then sample from tier_1/tier_2
@@ -122,7 +122,7 @@ Flag immediately if ANY of:
 #### Verification Outcome
 - `S2_VERIFIED`: Semantic Scholar API match (Levenshtein >= 0.70 + year match). Strongest programmatic evidence.
 - `VERIFIED`: DOI resolves + metadata matches (Tier 1)
-- `PLAUSIBLE`: No DOI but WebSearch confirms existence (Tier 2)
+- `PLAUSIBLE`: No DOI but websearch confirms existence (Tier 2)
 - `UNVERIFIABLE`: Cannot confirm existence through any method → flag for human review
 - `FABRICATED`: Evidence of non-existence (all tiers fail) → CRITICAL, must remove
 

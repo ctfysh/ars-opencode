@@ -31,7 +31,7 @@ These rules harden the audit agent against the documented hallucination/drift pa
 | Dimension | integrity_verification_agent | claim_ref_alignment_audit_agent |
 |---|---|---|
 | Scope | reference existence + bibliographic metadata + data | **claim-to-source faithfulness** (does the source actually say what the prose claims?) |
-| Verification depth | 100% reference fact-check via WebSearch | per-claim LLM-as-judge against retrieved reference text, with cache + sampling cap |
+| Verification depth | 100% reference fact-check via websearch | per-claim LLM-as-judge against retrieved reference text, with cache + sampling cap |
 | Verification method | search by metadata | retrieve full text (api / manual_pdf / paywall / not_found / audit_tool_failure), then judge alignment |
 | Trigger timing | Stage 2.5 + Stage 4.5 integrity gates | Stage 4 → Stage 5 transition (after Cite-Time Provenance Finalizer, before formatter hard gate) |
 | Verdict | PASS / FAIL on reference list | per-citation row in `claim_audit_results[]` + per-sentence rows in `uncited_assertions[]` / `claim_drifts[]` / `constraint_violations[]` |
