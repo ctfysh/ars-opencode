@@ -1,0 +1,33 @@
+name: Skill Lint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**/*.md'
+      - 'commands/**/*.md'
+  pull_request:
+    paths:
+      - 'skills/**/*.md'
+      - 'commands/**/*.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for CC-specific patterns
+        run: |
+          REMAINING=$(grep -rn '^model: ' deep-research academic-paper academic-paper-reviewer academic-pipeline --include='*.md' 2>/dev/null | wc -l)
+          if [ "$REMAINING" -gt 0 ]; then
+            echo "Found $REMAINING model: frontmatter fields (should be 0):"
+            grep -rn '^model: ' deep-research academic-paper academic-paper-reviewer academic-pipeline --include='*.md'
+            exit 1
+          fi
+      - name: Check for PascalCase tool names
+        run: |
+          WEBS=$(grep -rn '\bWebSearch\b' . --include='*.md' 2>/dev/null | wc -l)
+          if [ "$WEBS" -gt 0 ]; then
+            echo "Found $WEBS WebSearch references (should be websearch)"
+            exit 1
+          fi
