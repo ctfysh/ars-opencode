@@ -34,13 +34,14 @@ export default () => ({
       config.skills.paths.push(arsSkillsDir);
     }
 
-    // Register commands from opencode.json so /ars-* commands appear in palette
+    // Register commands from opencode.json so /ars-* commands appear in palette.
+    // Config schema uses "command" (singular), each with a "template" field.
     if (pluginConfig.commands) {
-      config.commands = config.commands || {};
+      config.command = config.command || {};
       for (const [name, relPath] of Object.entries(pluginConfig.commands)) {
         const absPath = path.resolve(repoRoot, relPath);
-        if (!config.commands[name]) {
-          config.commands[name] = absPath;
+        if (!config.command[name]) {
+          config.command[name] = { template: absPath };
         }
       }
     }
