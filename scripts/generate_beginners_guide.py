@@ -220,9 +220,9 @@ bullets = [
     "上传手稿（PDF/DOCX），获得多角度同行评审报告（/ars-reviewer）",
     "对文稿进行 Nature 风格的英文润色、改写或中译英（/ars-revision）",
     "执行 PRISMA 系统综述流程，生成结构化综述报告（/ars-systematic-review）",
-    "从论文 PDF 生成中英文对照阅读笔记（含图表提取）（/ars-abstract）",
+    "从论文 PDF 生成中英文对照阅读笔记（含图表提取）",
     "一键将研究数据整合为符合 Nature 要求的数据可用性声明（/ars-disclosure）",
-    "生成 Nature 风格的学术报告 PPT（中文）（/ars-plan）",
+    "生成 Nature 风格的学术报告 PPT（中文）",
 ]
 for b in bullets:
     add_bullet(b)
@@ -276,12 +276,13 @@ add_para(
 )
 
 add_heading_styled("2.3 验证安装", level=2)
-add_para("新会话启动后，输入以下任意一条命令验证 ARS 是否生效：", first_line_indent=0.74)
-add_code('/ars-calibrate')
-add_para("如果看到 ARS 的欢迎信息或模式列表，说明安装成功。", first_line_indent=0.74)
-
-add_para("也可以直接加载 meta 技能：", first_line_indent=0.74)
+add_para("新会话启动后，加载 meta 技能验证 ARS 是否生效：", first_line_indent=0.74)
 add_code('skill(name="ars-meta")')
+add_para(
+    "如果看到 ARS 的技能列表和命令列表，说明安装成功。"
+    "也可以直接输入 /ars-plan 等命令测试是否被识别。",
+    first_line_indent=0.74,
+)
 
 # ═══════════════════════════════════════════════
 # 3. 快速上手
