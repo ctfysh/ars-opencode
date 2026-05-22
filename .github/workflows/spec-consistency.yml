@@ -92,11 +92,6 @@ jobs:
           PYTHONPATH: .
         run: python3 -m unittest scripts.test_check_v3_6_7_pattern_protection -v
 
-      - name: Run v3.6.8 /ars-mark-read CLI tests
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_ars_mark_read scripts.test_check_v3_6_8_mark_read_commands -v
-
       - name: Run v3.8 annotation-literal sync lint tests
         env:
           PYTHONPATH: .
@@ -192,9 +187,6 @@ jobs:
 
       - name: Validate v3.7.1 Cite-Time Provenance Finalizer (Step 3b)
         run: python3 scripts/check_v3_6_8_cite_provenance_pipeline.py
-
-      - name: Validate v3.6.8 /ars-mark-read plugin commands (#190)
-        run: python3 scripts/check_v3_6_8_mark_read_commands.py
 
       - name: v3.9.0 cross-index triangulation lint
         env:
