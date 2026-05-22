@@ -1,0 +1,18 @@
+mode: other_evidence_synthesis
+stage: "2.5"
+generated_at: "2026-05-22T12:00:00Z"
+raise:
+  mode: principles_only
+  principles:
+    human_oversight: pass
+    transparency: pass
+    reproducibility: pass
+    fit_for_purpose: pass
+  principle_evidence:
+    human_oversight: []
+    transparency: []
+    reproducibility: []
+    fit_for_purpose: []
+  block_decision: pass
+overall_decision: pass
+user_action_required: false
