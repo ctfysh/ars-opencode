@@ -1,8 +1,12 @@
 # OpenCode-adapted spec consistency workflow
 # Trimmed from upstream ARS: removed checks that reference
-# .claude/CLAUDE.md and other Claude Code-specific paths.
-# Kept: Python unit tests, data validation, contract checks,
-# schema validation, and OpenCode plugin structure checks.
+# Claude Code-specific paths (.claude/CLAUDE.md) and upstream
+# agent file paths (academic-pipeline/agents/, deep-research/agents/,
+# academic-paper/agents/, etc.) that don't exist in this port.
+#
+# Kept: Python unit tests for core logic, contract validation,
+# preprint venues check, temporal verification (uses fixtures),
+# and OpenCode plugin structure validation.
 #
 # See SYNC.md for upstream sync protocol.
 
@@ -35,7 +39,7 @@ jobs:
       - name: Install lint dependencies
         run: pip install -r requirements-dev.txt pytest
 
-      # ── Python unit tests ──────────────────────────────────
+      # ── Python unit tests (core logic, no upstream paths) ──
 
       - name: Run #105 migration unit tests
         env:
@@ -46,21 +50,6 @@ jobs:
         env:
           PYTHONPATH: .
         run: python3 -m unittest scripts.test_check_compliance_report scripts.test_validate_compliance_fixtures -v
-
-      - name: Run collaboration depth rubric unit tests
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_check_collaboration_depth_rubric -v
-
-      - name: Run version consistency unit tests
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_check_version_consistency -v
-
-      - name: Run spec consistency unit tests
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_check_spec_consistency -v
 
       - name: Run check_sprint_contract unit tests
         env:
@@ -82,21 +71,6 @@ jobs:
           PYTHONPATH: .
         run: python3 -m unittest scripts.test_policy_anchor_disclosure -v
 
-      - name: Run passport reset contract tests
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_check_passport_reset_contract -v
-
-      - name: Run v3.6.7 pattern-protection mutation tests
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_check_v3_6_7_pattern_protection -v
-
-      - name: Run v3.8 annotation-literal sync lint tests
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_check_v3_8_annotation_literal_sync -v
-
       - name: Run v3.8 claim_audit pipeline + schema + uncited-assertion + manifest + finalizer + e2e + calibration tests
         env:
           PYTHONPATH: .
@@ -116,30 +90,10 @@ jobs:
           PYTHONPATH: .
         run: python3 -m unittest scripts.test_audit_schemas scripts.test__next_verified_at_ms -v
 
-      - name: Run v3.6.7 Step 6 Phase 6.6 orchestrator prompt static checks
-        env:
-          PYTHONPATH: .
-        run: python3 -m unittest scripts.test_v3_6_7_phase_6_6 -v
-
       # ── Data validation ───────────────────────────────────
 
       - name: Check PREPRINT_VENUES list consistency (#105)
         run: python3 scripts/check_preprint_venues_consistency.py
-
-      - name: Check data_access_level declarations
-        env:
-          PYTHONPATH: scripts
-        run: python3 scripts/check_data_access_level.py
-
-      - name: Check task_type declarations
-        env:
-          PYTHONPATH: scripts
-        run: python3 scripts/check_task_type.py
-
-      - name: Check collaboration depth rubric + observer contract
-        env:
-          PYTHONPATH: scripts
-        run: python3 scripts/check_collaboration_depth_rubric.py
 
       # ── Contract validation ────────────────────────────────
 
@@ -162,41 +116,13 @@ jobs:
             python3 scripts/check_sprint_contract.py "$f" --ars-version "${ARS_VERSION}"
           done
 
-      # ── Schema / protocol validation ────────────────────────
+      # ── Schema / protocol validation (self-contained) ──────
 
       - name: Validate literature_corpus schemas and examples
         run: python3 scripts/check_literature_corpus_schema.py
 
-      - name: Validate corpus consumer protocol (v3.6.5+)
-        run: python3 scripts/check_corpus_consumer_protocol.py
-
       - name: Validate v3.6.6 A/B fixture manifest
         run: python3 scripts/check_v3_6_6_ab_manifest.py
-
-      - name: Validate v3.6.7 downstream-agent pattern protection
-        run: python3 scripts/check_v3_6_7_pattern_protection.py
-
-      - name: Validate v3.7.1 byte-equivalence SHA gate (v3.6.7 boundary)
-        run: python3 scripts/check_v3_6_8_pattern_protection.py
-
-      - name: Validate v3.7.1 trust-chain frontmatter schema
-        run: python3 scripts/check_v3_6_8_frontmatter_trust_schema.py
-
-      - name: Validate v3.7.1 audit Scope Report block (Step 2 / D2)
-        run: python3 scripts/check_v3_6_8_audit_scope_block.py
-
-      - name: Validate v3.7.1 Cite-Time Provenance Finalizer (Step 3b)
-        run: python3 scripts/check_v3_6_8_cite_provenance_pipeline.py
-
-      - name: v3.9.0 cross-index triangulation lint
-        env:
-          PYTHONPATH: .
-        run: python scripts/check_v3_9_0_triangulation.py
-
-      - name: Run v3.9.2 Phase Boundary coverage lint (#133)
-        env:
-          PYTHONPATH: .
-        run: python3 scripts/check_v3_9_2_phase_boundary.py
 
       - name: Run v3.9.4 temporal verification lint (#135)
         env:
@@ -210,26 +136,6 @@ jobs:
                 --temporal-audit "$fixture/expected_temporal_audit_results.yaml"
             fi
           done
-
-      - name: Run v3.8 annotation-literal sync lint (#103)
-        env:
-          PYTHONPATH: .
-        run: python3 scripts/check_v3_8_annotation_literal_sync.py
-
-      - name: Check adapter docs up-to-date
-        run: python3 scripts/sync_adapter_docs.py --check
-
-      - name: Validate passport reset contract
-        run: python3 scripts/check_passport_reset_contract.py --root .
-
-      - name: Validate v3.6.7 Step 8 pattern-eval fixture manifests (Phase 6.8)
-        run: python3 scripts/check_pattern_eval_manifest.py
-
-      - name: Check policy anchor table structural lint (#108)
-        run: python3 scripts/check_policy_anchor_table.py
-
-      - name: Check policy anchor disclosure protocol lint (#108)
-        run: python3 scripts/check_policy_anchor_protocol.py
 
       # ── OpenCode-specific validation ───────────────────────
 
