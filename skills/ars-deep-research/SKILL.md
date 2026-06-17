@@ -2,8 +2,8 @@
 
 OpenCode ported skill: Deep Research — literature search, systematic review, fact-checking, Socratic dialogue.
 
-**Based on:** `deep-research/SKILL.md` from upstream v3.9.4.2
-**Version:** 2.8 (upstream)
+**Based on:** `deep-research/SKILL.md` from upstream v3.12.1
+**Version:** 2.10.0 (upstream)
 **Status:** active
 **Data access level:** verified_only
 **Task type:** open-ended
@@ -12,11 +12,12 @@ OpenCode ported skill: Deep Research — literature search, systematic review, f
 ## Modes
 
 | Mode | Category | Description |
-|---|---|---|
+|---|---|---|---|
 | full | ultrabrain | Full multi-agent research team |
 | quick | deep | Rapid brief |
 | review | deep | Research quality review |
 | lit-review | deep | Literature review |
+| three-way-scan | deep | Rapid WHY/HOW/WHAT paper comparison |
 | fact-check | deep | Fact-checking claims |
 | socratic | ultrabrain | Socratic guided research |
 | systematic-review | ultrabrain | PRISMA systematic review |
@@ -73,6 +74,15 @@ task(
   category="deep",
   load_skills=["ars-deep-research", "nature-academic-search"],
   prompt="Run deep-research fact-check mode. Verify the following claims..."
+)
+```
+
+### Three-Way-Scan Mode
+```text
+task(
+  category="deep",
+  load_skills=["ars-deep-research", "nature-academic-search"],
+  prompt="Run deep-research three-way-scan mode. Compare these papers with WHY/HOW/WHAT analysis..."
 )
 ```
 

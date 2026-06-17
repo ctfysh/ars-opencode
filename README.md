@@ -1,10 +1,10 @@
 # Academic Research Skills for OpenCode
 
-[![Version](https://img.shields.io/badge/version-v3.9.4.2-oc-blue)](https://github.com/your-org/ars-opencode)
+[![Version](https://img.shields.io/badge/version-v3.12.1-oc-blue)](https://github.com/your-org/ars-opencode)
 
 A comprehensive suite of OpenCode skills for academic research, covering the full pipeline from research to publication.
 
-**Port of:** [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) v3.9.4.2
+**Port of:** [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) v3.12.1
 
 ## Quick Start
 
@@ -42,7 +42,7 @@ See `docs/ARCHITECTURE.md` for full pipeline details. See `docs/SETUP.md` for pr
 - `docs/ARCHITECTURE.md` — Full pipeline reference
 - `docs/PERFORMANCE.md` — Token budgets and cost estimates
 - `docs/SETUP.md` — Prerequisites and setup
-- `MODE_REGISTRY.md` — All 25 modes across 4 skills
+- `MODE_REGISTRY.md` — All 27 modes across 4 skills
 - `SYNC.md` — Upstream sync protocol
 
 ## License

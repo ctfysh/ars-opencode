@@ -2,8 +2,8 @@
 
 OpenCode ported skill: Academic Paper — writing, formatting, revision, citation management.
 
-**Based on:** `academic-paper/SKILL.md` from upstream v3.9.4.2
-**Version:** 3.0 (upstream)
+**Based on:** `academic-paper/SKILL.md` from upstream v3.12.1
+**Version:** 3.2.0 (upstream)
 **Status:** active
 **Data access level:** verified_only
 **Task type:** open-ended
@@ -12,7 +12,7 @@ OpenCode ported skill: Academic Paper — writing, formatting, revision, citatio
 ## Modes
 
 | Mode | Category | Description |
-|---|---|---|
+|---|---|---|---|
 | full | ultrabrain | Full paper writing pipeline |
 | plan | deep | Socratic guided planning |
 | outline-only | deep | Paper outline generation |
@@ -23,6 +23,7 @@ OpenCode ported skill: Academic Paper — writing, formatting, revision, citatio
 | format-convert | quick | Citation format conversion |
 | citation-check | deep | Citation verification |
 | disclosure | deep | AI disclosure statement generation |
+| rebuttal-audit | deep | QA of existing rebuttal/response draft |
 
 ## Trigger Keywords
 
@@ -69,6 +70,15 @@ task(
   category="deep",
   load_skills=["ars-academic-paper"],
   prompt="Run academic-paper disclosure mode. Generate an AI disclosure statement for..."
+)
+```
+
+### Rebuttal-Audit Mode
+```text
+task(
+  category="deep",
+  load_skills=["ars-academic-paper", "ars-reviewer"],
+  prompt="Run academic-paper rebuttal-audit mode. QA the author's existing rebuttal/response draft against the reviewer comments..."
 )
 ```
 

@@ -2,8 +2,8 @@
 
 OpenCode ported skill: Academic Paper Reviewer — multi-perspective peer review.
 
-**Based on:** `academic-paper-reviewer/SKILL.md` from upstream v3.9.4.2
-**Version:** 1.8 (upstream)
+**Based on:** `academic-paper-reviewer/SKILL.md` from upstream v3.12.1
+**Version:** 1.10.0 (upstream)
 **Status:** active
 **Data access level:** verified_only
 **Task type:** open-ended

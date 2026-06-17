@@ -1,6 +1,6 @@
 {
   "name": "academic-research-skills",
-  "version": "3.9.4.2-oc",
+  "version": "3.12.1-oc",
   "description": "OpenCode port of Academic Research Skills — full research pipeline from literature search to publication",
   "skills": {
     "ars-meta": "skills/ars-meta/SKILL.md",
@@ -22,7 +22,13 @@
     "ars-abstract": "commands/ars-abstract.md",
     "ars-disclosure": "commands/ars-disclosure.md",
     "ars-format": "commands/ars-format.md",
-    "ars-calibrate": "commands/ars-calibrate.md"
+    "ars-calibrate": "commands/ars-calibrate.md",
+    "ars-3w": "commands/ars-3w.md",
+    "ars-cache-invalidate": "commands/ars-cache-invalidate.md",
+    "ars-mark-read": "commands/ars-mark-read.md",
+    "ars-rebuttal-audit": "commands/ars-rebuttal-audit.md",
+    "ars-revision-coach": "commands/ars-revision-coach.md",
+    "ars-unmark-read": "commands/ars-unmark-read.md"
   },
   "init": "hooks/ars-init.md"
 }

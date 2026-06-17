@@ -2,8 +2,8 @@
 
 OpenCode ported skill: Academic Pipeline — 10-stage orchestrated research-to-publication workflow.
 
-**Based on:** `academic-pipeline/SKILL.md` from upstream v3.9.4.2
-**Version:** 3.7 (upstream)
+**Based on:** `academic-pipeline/SKILL.md` from upstream v3.12.1
+**Version:** 3.12.1 (upstream)
 **Status:** active
 **Data access level:** verified_only
 **Task type:** open-ended
